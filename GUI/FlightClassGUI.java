@@ -25,7 +25,7 @@ public class FlightClassGUI extends JFrame {
         info.setBorder(new EmptyBorder(0, 0, 6, 0));
         content.add(info, BorderLayout.NORTH);
 
-        // Comparison table
+        //Comparison table
         String[] cols = {"Feature", "Economy Class", "Business Class", "First Class"};
         Object[][] rows = {
             {"Seat Width",        "17-18 inches",         "21-23 inches",         "25-34 inches"},
@@ -53,7 +53,7 @@ public class FlightClassGUI extends JFrame {
         table.getColumnModel().getColumn(0).setPreferredWidth(160);
         table.setRowHeight(28);
 
-        // Color alternating rows with class tints
+        //Color alternating rows with class tints
         table.setDefaultRenderer(Object.class, new javax.swing.table.DefaultTableCellRenderer() {
             Color[] tints = {Color.WHITE, new Color(235, 245, 255), new Color(255, 252, 235)};
             public java.awt.Component getTableCellRendererComponent(JTable t, Object val,
