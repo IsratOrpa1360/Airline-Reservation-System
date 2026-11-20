@@ -18,7 +18,7 @@ public class BookingMgmtGUI extends JFrame {
     private JTextField   txtNat, txtPhone, txtEmail, txtEmerg, txtDob;
     private JComboBox<String> cmbClass, cmbMeal;
     private JLabel       lblPrice;
-    // Search / history
+    // Search
     private JTextField   txtSearchUser, txtSearchFlight;
     private DefaultTableModel model;
     private JTable       table;
@@ -47,13 +47,13 @@ public class BookingMgmtGUI extends JFrame {
         setVisible(true);
     }
 
-    // ── New Booking Tab ────────────────────────────────────────────────────────
+    //New Booking Tab
     private JPanel buildNewBookingTab() {
         JPanel tab = new JPanel(new BorderLayout(0, 8));
         tab.setBackground(Color.WHITE);
         tab.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        // Row 1: Flight & Seat selection
+        //Row 1: Flight & Seat selection
         JPanel flightRow = SimpleTheme.sectionPanel("Flight & Seat");
         JPanel fFields = new JPanel(new GridLayout(1, 4, 10, 0));
         fFields.setBackground(Color.WHITE);
@@ -89,7 +89,7 @@ public class BookingMgmtGUI extends JFrame {
         flightBtns.add(btnSelectSeat); flightBtns.add(btnCheckFlight);
         flightRow.add(flightBtns, BorderLayout.SOUTH);
 
-        // Row 2: Passenger info
+        //Row 2: Passenger info
         JPanel passRow = SimpleTheme.sectionPanel("Passenger Information");
         JPanel pFields = new JPanel(new GridLayout(2, 4, 8, 8));
         pFields.setBackground(Color.WHITE);
@@ -117,7 +117,7 @@ public class BookingMgmtGUI extends JFrame {
         }
         passRow.add(pFields, BorderLayout.CENTER);
 
-        // Row 3: Buttons
+        //Row 3: Buttons
         JPanel actionRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 8));
         actionRow.setBackground(Color.WHITE);
         actionRow.setBorder(BorderFactory.createLineBorder(SimpleTheme.BORDER_COL));
@@ -134,7 +134,7 @@ public class BookingMgmtGUI extends JFrame {
         top.add(flightRow); top.add(passRow); top.add(actionRow);
         tab.add(top, BorderLayout.CENTER);
 
-        // Pre-fill username if logged in
+        //Pre-fill username if logged in
         if (currentUser != null && !currentUser.getMembershipTier().equals("Guest")) {
             txtEmail.setText(currentUser.getEmail());
         }
@@ -142,7 +142,7 @@ public class BookingMgmtGUI extends JFrame {
         return tab;
     }
 
-    // ── History Tab ────────────────────────────────────────────────────────────
+    //History Tab
     private JPanel buildHistoryTab() {
         JPanel tab = new JPanel(new BorderLayout(0, 8));
         tab.setBackground(Color.WHITE);
@@ -194,7 +194,7 @@ public class BookingMgmtGUI extends JFrame {
         return tab;
     }
 
-    // ── Actions ────────────────────────────────────────────────────────────────
+    //Actions
     private void openSeatSelector() {
         String fn  = txtFlightNum.getText().trim().toUpperCase();
         String cls = (String) cmbClass.getSelectedItem();
@@ -233,13 +233,13 @@ public class BookingMgmtGUI extends JFrame {
             SimpleTheme.showError(this, "Seat " + seat + " is already booked."); return;
         }
 
-        // Calculate price
+        //Calculate price
         double baseFare   = flight.getDynamicPrice(cls);
         double surcharge  = cls.equals("Business") ? baseFare * 0.10 : cls.equals("First") ? baseFare * 0.20 : 0;
         Payment pay = new Payment(baseFare, surcharge, 0, "");
         double total = pay.calculateTotal();
 
-        // Show payment dialog
+        //Show payment dialog
         String method = (String) JOptionPane.showInputDialog(this,
             String.format("Total Amount: BDT %,.2f\n\nSelect Payment Method:", total),
             "Payment", JOptionPane.QUESTION_MESSAGE, null,
