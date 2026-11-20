@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class UITheme {
-    // ── Palette ────────────────────────────────────────────────────────────────
+    //Palette
     public static final Color NAVY        = new Color(8,   28,  72);
     public static final Color BLUE        = new Color(21,  101, 192);
     public static final Color SKY         = new Color(30,  136, 229);
@@ -28,7 +28,7 @@ public class UITheme {
     public static final Color SEAT_BOOKED = new Color(183,  28,  28);
     public static final Color SEAT_BLOCK  = new Color(158, 158, 158);
 
-    // ── Typography ─────────────────────────────────────────────────────────────
+    //Typography
     public static final Font F_H1       = new Font("Segoe UI", Font.BOLD,  26);
     public static final Font F_H2       = new Font("Segoe UI", Font.BOLD,  20);
     public static final Font F_H3       = new Font("Segoe UI", Font.BOLD,  16);
@@ -41,7 +41,7 @@ public class UITheme {
     public static final Font F_TH       = new Font("Segoe UI", Font.BOLD,  11);
     public static final Font F_MONO     = new Font("Consolas",  Font.PLAIN, 12);
 
-    // ── Shared helpers ─────────────────────────────────────────────────────────
+    //Shared helpers
     public static JButton primaryButton(String text) {
         return styledButton(text, SKY, WHITE);
     }
