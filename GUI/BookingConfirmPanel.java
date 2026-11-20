@@ -41,7 +41,7 @@ public class BookingConfirmPanel extends JPanel {
         Payment pay = ses.getCurrentPayment();
         if (f == null || p == null) return;
 
-        // Fetch the latest booking for this user+flight
+        // Fetch latest booking for this user+flight
         BookingManagement bm = new BookingManagement();
         List<Booking> bookings = bm.getBookingsForUser(ses.getBookingUsername());
         Booking latest = bookings.isEmpty() ? null : bookings.get(bookings.size() - 1);
