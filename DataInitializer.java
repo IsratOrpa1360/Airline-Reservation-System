@@ -6,10 +6,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Seeds the application with demo flights and a demo user on first run.
- * Safe to call every launch — skips seeding if data already exists.
- */
+
 public class DataInitializer {
 
     public static void initialize() {
