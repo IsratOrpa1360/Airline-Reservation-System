@@ -2,27 +2,22 @@ package GUI;
 
 import Entities_All.*;
 
-/**
- * Singleton session holder – carries the logged-in user and current booking
- * state across all GUI panels without passing parameters everywhere.
- */
 public class AppSession {
 
     private static AppSession instance;
 
-    // ── Auth ───────────────────────────────────────────────────────────────────
+   
     private User    currentUser;
     private boolean isGuest;
     private String  guestName;
     private String  guestEmail;
 
-    // ── Active booking flow ────────────────────────────────────────────────────
     private Flight   selectedFlight;
     private String   selectedSeatNumber;
-    private String   selectedClass;        // Economy / Business / First
+    private String   selectedClass;// Economy / Business / First
     private double   calculatedBasePrice;
     private double   calculatedTotalPrice;
-    private Passenger bookingPassenger;    // passenger details for current booking
+    private Passenger bookingPassenger;// passenger details
     private Payment   currentPayment;
 
     private AppSession() {}
@@ -32,7 +27,7 @@ public class AppSession {
         return instance;
     }
 
-    // ── Auth accessors ─────────────────────────────────────────────────────────
+    //Auth accessors 
     public User    getCurrentUser()  { return currentUser; }
     public boolean isGuest()         { return isGuest; }
     public String  getGuestName()    { return guestName; }
@@ -55,7 +50,7 @@ public class AppSession {
 
     public boolean isLoggedIn() { return currentUser != null || isGuest; }
 
-    // ── Booking flow accessors ─────────────────────────────────────────────────
+    //Booking flow accessors
     public Flight   getSelectedFlight()    { return selectedFlight; }
     public String   getSelectedSeat()      { return selectedSeatNumber; }
     public String   getSelectedClass()     { return selectedClass; }
@@ -78,7 +73,7 @@ public class AppSession {
         bookingPassenger = null; currentPayment = null;
     }
 
-    // ── Convenience ───────────────────────────────────────────────────────────
+    //Convenience
     public String getBookingUsername() {
         return isGuest ? (guestName + "_guest") : (currentUser != null ? currentUser.getUsername() : "unknown");
     }
