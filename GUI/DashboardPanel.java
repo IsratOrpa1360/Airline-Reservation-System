@@ -22,8 +22,8 @@ public class DashboardPanel extends JPanel {
         build();
     }
 
-    private void build() {
-        // Header
+    private void build(){
+        //Header
         JPanel header = new JPanel(new BorderLayout());
         header.setBackground(UITheme.BLUE);
         header.setBorder(new EmptyBorder(24, 30, 24, 30));
@@ -47,7 +47,7 @@ public class DashboardPanel extends JPanel {
         header.add(searchBtn, BorderLayout.EAST);
         add(header, BorderLayout.NORTH);
 
-        // Main body
+        //Main body
         JPanel body = new JPanel(new BorderLayout(14, 14));
         body.setBackground(UITheme.SURFACE);
         body.setBorder(new EmptyBorder(16, 16, 16, 16));
@@ -67,7 +67,7 @@ public class DashboardPanel extends JPanel {
         AppSession ses = AppSession.getInstance();
         greetLabel.setText("Welcome back, " + ses.getDisplayName() + "!");
 
-        // Stats cards
+        //Stats cards
         statsPanel.removeAll();
         BookingManagement bm = new BookingManagement();
         FlightManagement  fm = new FlightManagement();
@@ -88,7 +88,7 @@ public class DashboardPanel extends JPanel {
         statsPanel.add(statCard("✅", "Confirmed",           String.valueOf(confirmed),       UITheme.SUCCESS));
         statsPanel.add(statCard("⭐", "Loyalty Points",      pts + " (" + tier + ")",         new Color(200, 130, 0)));
 
-        // Recent bookings
+        //Recent bookings
         recentPanel.removeAll();
         JLabel rtitle = UITheme.label("Recent Bookings", UITheme.F_H3, UITheme.NAVY);
         rtitle.setBorder(new EmptyBorder(0, 0, 10, 0));
@@ -114,7 +114,7 @@ public class DashboardPanel extends JPanel {
             recentPanel.add(sp, BorderLayout.CENTER);
         }
 
-        // Quick actions
+        //Quick actions
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         actions.setOpaque(false);
 
