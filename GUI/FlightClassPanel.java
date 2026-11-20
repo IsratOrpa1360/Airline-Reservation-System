@@ -28,7 +28,7 @@ public class FlightClassPanel extends JPanel {
         sub.setBorder(new EmptyBorder(0, 0, 10, 0));
         body.add(sub, BorderLayout.NORTH);
 
-        // Three class cards
+        //3class cards
         JPanel cards = new JPanel(new GridLayout(1, 3, 16, 0));
         cards.setOpaque(false);
         cards.add(buildClassCard("Economy", "✈",
@@ -78,7 +78,7 @@ public class FlightClassPanel extends JPanel {
 
         body.add(cards, BorderLayout.CENTER);
 
-        // Bottom CTA
+        //Bottom CTA
         JPanel cta = new JPanel(new FlowLayout(FlowLayout.CENTER, 14, 10));
         cta.setOpaque(false);
         JLabel ctaTxt = UITheme.label("Ready to book? Search for available flights now.", UITheme.F_BODY, UITheme.TEXT_MED);
@@ -117,7 +117,7 @@ public class FlightClassPanel extends JPanel {
         hdr.add(hdrTxt, BorderLayout.CENTER);
         card.add(hdr, BorderLayout.NORTH);
 
-        // Features table
+        //Features table
         JPanel body = new JPanel();
         body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));
         body.setBorder(new EmptyBorder(12, 14, 16, 14));
