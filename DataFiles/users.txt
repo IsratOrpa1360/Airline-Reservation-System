@@ -1,0 +1,8 @@
+demo;demo@airline.com;demo123;5056;Silver;2026-09-01
+admin;admin@airline.com;admin123;51712;Platinum;2025-11-01
+orpa;gfh@gmail.com;123456;156;Bronze;2026-11-01
+ohona;jkjk@gmail.com;123456;0;Bronze;2026-11-01
+adiyan;d@gmail.com;123456;1500;Bronze;2026-11-01
+john;j@gmail.com;123456;0;Bronze;2026-11-03
+Ripa;ripa@gmail.com;12345678;0;Bronze;2026-11-20
+Orpa;orpa@airline.com;orpa123;15000;Gold;2026-05-20

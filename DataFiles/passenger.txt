@@ -1,0 +1,5 @@
+1;orpa;1360;Female;abc@gmail.com;01644344665;10;10;bangladeshi;0987654444;Halal;1/2/2003
+2;faysal;1361;Male;ffthj@gmail.com;8776578908;11;10;indian;24345464;Vegetarian;1/7/2001
+3;emi;1362;Female;fgn@gmail.com;0654756565;11;12;bangladeshi;35456576867;Halal;3/6/2007
+5;adnan;1364;Male;jkkk@gmail.com;876778666;19;76;nepalion;09876655;Non-Vegetarian;7/08/2005
+34;najhu;233443;Female;x@gmail.com;896738493749;345;32;nepolian;24234354545;Vegan;3/8/2001
