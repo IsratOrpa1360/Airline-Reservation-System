@@ -67,7 +67,7 @@ public class LoyaltyPanel extends JPanel {
         contentPanel.add(tiersPanel);
         contentPanel.add(Box.createVerticalStrut(16));
 
-        // Earn tips
+        //Earn tips
         JPanel earnCard = buildEarnCard();
         earnCard.setAlignmentX(Component.LEFT_ALIGNMENT);
         contentPanel.add(earnCard);
@@ -126,7 +126,7 @@ public class LoyaltyPanel extends JPanel {
         if ("Max Tier".equals(nextTier)) {
             card.add(UITheme.label("🏆  You have reached the maximum Platinum tier!", UITheme.F_BODY, UITheme.GOLD));
         } else {
-            // Progress bar
+            //Progress bar
             JProgressBar pb = new JProgressBar(0, toNext + lp.getTotalPoints());
             pb.setValue(lp.getTotalPoints());
             pb.setStringPainted(true);
