@@ -10,7 +10,7 @@ import FileManagement.PassengerManagement;
 
 public class PassengerRegGUI extends JPanel implements ActionListener {
 
-    // ── Color palette ──────────────────────────────────────────────────────────
+    //Color palette
     private static final Color C_HEADER      = new Color(15,  40,  80);
     private static final Color C_PRIMARY     = new Color(25,  70, 145);
     private static final Color C_ACCENT      = new Color(41, 121, 255);
@@ -25,7 +25,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
     private static final Color C_ROW_ALT     = new Color(246, 249, 253);
     private static final Color C_SEL_ROW     = new Color(210, 228, 255);
 
-    // ── Fonts ──────────────────────────────────────────────────────────────────
+    //Fonts
     private static final Font F_APP_TITLE    = new Font("Segoe UI", Font.BOLD,  22);
     private static final Font F_APP_SUB      = new Font("Segoe UI", Font.PLAIN, 12);
     private static final Font F_SECTION      = new Font("Segoe UI", Font.BOLD,  12);
@@ -36,7 +36,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
     private static final Font F_TD           = new Font("Segoe UI", Font.PLAIN, 12);
     private static final Font F_STATUS       = new Font("Segoe UI", Font.PLAIN, 11);
 
-    // ── Form widgets ───────────────────────────────────────────────────────────
+    //Form widgets
     private JTextField txtPl, txtName, txtPassengerId, txtDob;
     private JTextField txtEmail, txtPhoneNumber, txtEmergencyContact;
     private JTextField txtPassportNumber, txtFlightNumber, txtNationality;
@@ -45,16 +45,16 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
     private ButtonGroup genderGroup;
     private JComboBox<String> cmbMeal;
 
-    // ── Buttons ────────────────────────────────────────────────────────────────
+    //Buttons
     private JButton btnRegister, btnUpdate, btnDelete, btnClear, btnSearch;
 
-    // ── Table ──────────────────────────────────────────────────────────────────
+    //Table 
     private DefaultTableModel tModel;
     private JTable table;
     private JLabel statusLabel;
     private JLabel countLabel;
 
-    // ══════════════════════════════════════════════════════════════════════════
+
     public PassengerRegGUI() {
         applyLookAndFeel();
         setLayout(new BorderLayout(0, 0));
@@ -65,7 +65,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         loadAllPassengers();
     }
 
-    // ── Look-and-feel ──────────────────────────────────────────────────────────
+    //Look-and-feel
     private void applyLookAndFeel() {
         try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
         catch (Exception ignored) {}
@@ -75,7 +75,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         UIManager.put("Button.font",             F_BTN);
     }
 
-    // ── Header bar ─────────────────────────────────────────────────────────────
+    //Header bar
     private JPanel buildHeader() {
         JPanel hdr = new JPanel(new BorderLayout());
         hdr.setBackground(C_HEADER);
@@ -119,7 +119,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         return hdr;
     }
 
-    // ── Main content (form + table) ────────────────────────────────────────────
+    //Main content (form + table)
     private JSplitPane buildMain() {
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, buildFormPanel(), buildTablePanel());
         split.setDividerSize(6);
@@ -130,7 +130,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         return split;
     }
 
-    // ── Left: form card ────────────────────────────────────────────────────────
+    //Left: form card
     private JPanel buildFormPanel() {
         JPanel wrapper = new JPanel(new BorderLayout());
         wrapper.setBackground(C_BG);
@@ -302,7 +302,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         return b;
     }
 
-    // ── Right: table panel ─────────────────────────────────────────────────────
+    //Right: table panel
     private JPanel buildTablePanel() {
         JPanel panel = new JPanel(new BorderLayout(0, 10));
         panel.setBackground(C_BG);
@@ -343,12 +343,12 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         searchCard.add(searchBtns, BorderLayout.EAST);
         panel.add(searchCard, BorderLayout.NORTH);
 
-        // Table card
+        //Table card
         JPanel tableCard = new JPanel(new BorderLayout());
         tableCard.setBackground(C_CARD);
         tableCard.setBorder(BorderFactory.createLineBorder(C_BORDER));
 
-        // Table header bar
+        //Table header bar
         JPanel tableHdr = new JPanel(new BorderLayout());
         tableHdr.setBackground(C_PRIMARY);
         tableHdr.setBorder(new EmptyBorder(9, 14, 9, 14));
@@ -362,7 +362,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         tableHdr.add(countLabel, BorderLayout.EAST);
         tableCard.add(tableHdr, BorderLayout.NORTH);
 
-        // Table
+        //Table
         String[] cols = {"PL", "Name", "Passenger ID", "Gender", "Email",
                 "Phone", "Passport No.", "Flight No.", "Nationality", "Emergency Contact", "Meal", "DOB"};
         tModel = new DefaultTableModel(cols, 0) {
@@ -387,7 +387,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         th.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, C_BORDER));
         th.setPreferredSize(new Dimension(0, 34));
 
-        // Striped row renderer
+        //Striped row renderer
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
             public Component getTableCellRendererComponent(
                     JTable t, Object val, boolean sel, boolean foc, int row, int col) {
@@ -400,11 +400,11 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         };
         for (int i = 0; i < cols.length; i++) table.getColumnModel().getColumn(i).setCellRenderer(renderer);
 
-        // Column widths
+        //Column widths
         int[] widths = {50, 130, 110, 72, 170, 115, 115, 90, 105, 135, 105, 95};
         for (int i = 0; i < widths.length; i++) table.getColumnModel().getColumn(i).setPreferredWidth(widths[i]);
 
-        // Row click → populate form
+        //Row click - populate form
         table.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 int row = table.getSelectedRow();
@@ -430,7 +430,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         return panel;
     }
 
-    // ── Status bar ─────────────────────────────────────────────────────────────
+    //Status bar
     private JPanel buildStatusBar() {
         JPanel bar = new JPanel(new BorderLayout());
         bar.setBackground(C_HEADER);
@@ -449,9 +449,6 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         return bar;
     }
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // Action handling
-    // ══════════════════════════════════════════════════════════════════════════
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -463,7 +460,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         else if (src == btnClear)    clearForm();
     }
 
-    // ── Register ───────────────────────────────────────────────────────────────
+    //Register 
     public void registerClicked() { handleRegister(); }
     private void handleRegister() {
         if (!validateForm(true)) return;
@@ -473,7 +470,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         try { pl = Integer.parseInt(plStr); }
         catch (NumberFormatException ex) { showError("PL Number must be a whole number (e.g. 1001)."); return; }
 
-        // Duplicate PL check
+        //Duplicate PL check
         PassengerManagement pm = new PassengerManagement();
         if (pm.searchPassenger(pl) != null) {
             showError("A passenger with PL " + pl + " already exists. Use Update to modify.");
@@ -487,7 +484,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         clearForm();
     }
 
-    // ── Update ─────────────────────────────────────────────────────────────────
+    //Update
     public void updateClicked() { handleUpdate(); }
     private void handleUpdate() {
         if (!validateForm(true)) return;
@@ -502,7 +499,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         showSuccess("Passenger PL " + pl + " updated successfully.");
     }
 
-    // ── Delete ─────────────────────────────────────────────────────────────────
+    //Delete 
     public void deleteClicked() { handleDelete(); }
     private void handleDelete() {
         String plStr = txtPl.getText().trim();
@@ -527,7 +524,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         clearForm();
     }
 
-    // ── Search ─────────────────────────────────────────────────────────────────
+    //Search 
     public void searchClicked() { handleSearch(); }
     private void handleSearch() {
         String plStr = txtSearch.getText().trim();
@@ -553,7 +550,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         setStatus("Found: " + p.getName() + " (PL " + pl + ")", C_SUCCESS);
     }
 
-    // ── Clear form ─────────────────────────────────────────────────────────────
+    //Clear form
     private void clearForm() {
         for (JTextField f : new JTextField[]{txtPl, txtName, txtPassengerId, txtDob,
                 txtEmail, txtPhoneNumber, txtEmergencyContact,
@@ -567,7 +564,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         setStatus("Form cleared — ready for new entry.", C_TXT_MUTED);
     }
 
-    // ── Data helpers ───────────────────────────────────────────────────────────
+    //Data helpers 
     private void loadAllPassengers() {
         PassengerManagement pm = new PassengerManagement();
         Passenger[] list = pm.getAllPassengers();
@@ -633,7 +630,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
                 meal, txtDob.getText().trim());
     }
 
-    // ── Validation ─────────────────────────────────────────────────────────────
+    //Validation
     private boolean validateForm(boolean needPl) {
         if (needPl && txtPl.getText().trim().isEmpty()) {
             showError("PL Number is required."); return false;
@@ -647,7 +644,7 @@ public class PassengerRegGUI extends JPanel implements ActionListener {
         return true;
     }
 
-    // ── Status helpers ─────────────────────────────────────────────────────────
+    //Status helpers 
     private void setStatus(String msg, Color color) {
         statusLabel.setText(msg);
         statusLabel.setForeground(color);
