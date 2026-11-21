@@ -9,10 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
-/**
- * macOS-style spotlight search overlay for quick flight lookup.
- * Triggered from MainDashboard; dims the parent and floats a search bar.
- */
+
 public class SpotlightSearchGUI extends JDialog {
 
     private JTextField searchField;
@@ -59,14 +56,14 @@ public class SpotlightSearchGUI extends JDialog {
         card.add(icon, BorderLayout.WEST);
         card.add(searchField, BorderLayout.CENTER);
 
-        // Results dropdown panel
+        //Results dropdown panel
         resultsPanel = new JPanel();
         resultsPanel.setLayout(new BoxLayout(resultsPanel, BoxLayout.Y_AXIS));
         resultsPanel.setBackground(Color.WHITE);
         resultsPanel.setBorder(new MatteBorder(0, 1, 1, 1, new Color(200, 200, 200)));
         resultsPanel.setVisible(false);
 
-        // Container to stack card + results
+        //Container to stack card + results
         JPanel stack = new JPanel();
         stack.setLayout(new BoxLayout(stack, BoxLayout.Y_AXIS));
         stack.setOpaque(false);
@@ -81,21 +78,21 @@ public class SpotlightSearchGUI extends JDialog {
         stack.setBounds(x, y, cardW, 400);
         overlay.add(stack);
 
-        // ESC closes
+        //ESC closes
         KeyStroke esc = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
         overlay.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(esc, "close");
         overlay.getActionMap().put("close", new AbstractAction() {
             public void actionPerformed(ActionEvent e) { dispose(); }
         });
 
-        // Click outside closes
+        //Click outside closes
         overlay.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (!stack.getBounds().contains(e.getPoint())) dispose();
             }
         });
 
-        // Live search
+        //Live search
         searchField.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) { dispose(); return; }
