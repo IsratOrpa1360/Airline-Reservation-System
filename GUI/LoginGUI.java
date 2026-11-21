@@ -24,7 +24,7 @@ public class LoginGUI extends JFrame {
         JPanel main = new JPanel(new BorderLayout());
         main.setBackground(Color.WHITE);
 
-        // Header
+        //Header
         JPanel header = new JPanel(new FlowLayout(FlowLayout.CENTER));
         header.setBackground(SimpleTheme.HEADER_BG);
         header.setPreferredSize(new Dimension(0, 50));
@@ -35,7 +35,7 @@ public class LoginGUI extends JFrame {
         header.add(title);
         main.add(header, BorderLayout.NORTH);
 
-        // Form panel
+        //Form panel
         JPanel form = new JPanel(new GridBagLayout());
         form.setBackground(Color.WHITE);
         form.setBorder(new EmptyBorder(25, 60, 15, 60));
@@ -66,7 +66,7 @@ public class LoginGUI extends JFrame {
 
         main.add(form, BorderLayout.CENTER);
 
-        // Buttons
+        //Buttons
         JPanel btnPanel = new JPanel(new GridLayout(3, 2, 8, 8));
         btnPanel.setBackground(Color.WHITE);
         btnPanel.setBorder(new EmptyBorder(0, 60, 20, 60));
