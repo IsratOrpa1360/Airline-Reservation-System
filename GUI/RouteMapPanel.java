@@ -145,9 +145,6 @@ public class RouteMapPanel extends JPanel {
         return h;
     }
 
-    // -------------------------------------------------------------------------
-    // Inner canvas — draws the map + routes
-    // -------------------------------------------------------------------------
     static class MapCanvas extends JPanel {
 
         private List<Flight> flights = new ArrayList<>();
@@ -177,12 +174,12 @@ public class RouteMapPanel extends JPanel {
         }
 
         private void drawGlobe(Graphics2D g2, int W, int H) {
-            // Gradient background
+            //Gradient background
             GradientPaint bg = new GradientPaint(0, 0, new Color(8, 20, 55), 0, H, new Color(15, 40, 90));
             g2.setPaint(bg);
             g2.fillRect(0, 0, W, H);
 
-            // Subtle continent outlines (simplified rectangles to suggest land masses)
+            // Subtle
             g2.setColor(new Color(30, 70, 130, 60));
             g2.fillRect((int)(W*0.35), (int)(H*0.18), (int)(W*0.25), (int)(H*0.45)); // Europe+Africa
             g2.fillRect((int)(W*0.60), (int)(H*0.15), (int)(W*0.25), (int)(H*0.40)); // Asia
@@ -216,18 +213,18 @@ public class RouteMapPanel extends JPanel {
                 int x1 = (int)(a[0] * sx), y1 = (int)(a[1] * sy);
                 int x2 = (int)(b[0] * sx), y2 = (int)(b[1] * sy);
 
-                // Dashed arc-like line
+                //Dashed arc-like line
                 float[] dash = {10f, 6f};
                 g2.setStroke(new BasicStroke(1.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1f, dash, 0f));
                 g2.setColor(new Color(30, 144, 255, 130));
 
-                // Draw curved arc via quadratic bezier
+                //Draw curved arc via quadratic bezier
                 int cx = (x1 + x2) / 2;
                 int cy = Math.min(y1, y2) - 40;
                 java.awt.geom.QuadCurve2D curve = new java.awt.geom.QuadCurve2D.Float(x1, y1, cx, cy, x2, y2);
                 g2.draw(curve);
 
-                // Draw small arrow mid-point
+                //Draw small arrow mid-point
                 g2.setStroke(new BasicStroke(1f));
                 g2.setColor(new Color(100, 180, 255, 160));
                 int mx = (x1 + 2*cx + x2) / 4;
@@ -237,7 +234,7 @@ public class RouteMapPanel extends JPanel {
         }
 
         private void drawCities(Graphics2D g2, double sx, double sy) {
-            // Collect which cities have active flights
+            //Collect which cities have active flights
             Set<String> activeCities = new HashSet<>();
             if (flights != null) {
                 for (Flight f : flights) {
@@ -256,7 +253,7 @@ public class RouteMapPanel extends JPanel {
                 Color dotColor = active ? UITheme.GOLD : new Color(120, 140, 170);
                 int dotSize = active ? 10 : 7;
 
-                // Glow ring for active cities
+                //Glow ring for active cities
                 if (active) {
                     g2.setColor(new Color(255, 200, 50, 40));
                     g2.fillOval(cx - 9, cy - 9, 20, 20);
@@ -267,7 +264,7 @@ public class RouteMapPanel extends JPanel {
                 g2.setColor(dotColor);
                 g2.fillOval(cx - dotSize/2, cy - dotSize/2, dotSize, dotSize);
 
-                // City label
+                //City label
                 g2.setColor(active ? Color.WHITE : new Color(160, 180, 200));
                 g2.setFont(active ? new Font("Segoe UI", Font.BOLD, 11)
                                   : new Font("Segoe UI", Font.PLAIN, 9));
