@@ -8,10 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
-/**
- * Standalone seat map dialog. Returns selected seat via callback.
- * Rows 1-3 = First Class (A,B,C,D), 4-8 = Business (A,B,C,D), 9-28 = Economy (A,B,C,D,E,F).
- */
+
 public class SeatSelectGUI extends JDialog {
 
     private String selectedSeat = null;
