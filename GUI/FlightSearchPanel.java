@@ -27,11 +27,11 @@ public class FlightSearchPanel extends JPanel {
     }
 
     private void build() {
-        // Page header
+        //Page header
         JPanel hdr = pageHeader("🔍  Flight Search", "Find available flights and book your seat");
         add(hdr, BorderLayout.NORTH);
 
-        // Search form card
+        //Search form card
         JPanel formCard = UITheme.card();
         formCard.setLayout(new BorderLayout(0, 14));
         formCard.setBorder(new EmptyBorder(20, 24, 20, 24));
@@ -40,7 +40,7 @@ public class FlightSearchPanel extends JPanel {
         fl.setBorder(new EmptyBorder(0, 0, 8, 0));
         formCard.add(fl, BorderLayout.NORTH);
 
-        // Search fields row
+        //Search fields row
         JPanel fields = new JPanel(new GridLayout(1, 5, 12, 0));
         fields.setOpaque(false);
 
@@ -109,7 +109,7 @@ public class FlightSearchPanel extends JPanel {
         body.add(scroll,   BorderLayout.CENTER);
         add(body, BorderLayout.CENTER);
 
-        // Kick off with all flights
+        //Kick off with all flights
         performSearch();
     }
 
@@ -165,7 +165,7 @@ public class FlightSearchPanel extends JPanel {
 
         left.add(route); left.add(times); left.add(info);
 
-        // Center: prices
+        //Center: prices
         JPanel prices = new JPanel(new GridLayout(3, 1, 0, 4));
         prices.setOpaque(false);
         prices.setPreferredSize(new Dimension(280, 0));
@@ -173,7 +173,7 @@ public class FlightSearchPanel extends JPanel {
         prices.add(priceChip("Business", f.getDynamicPrice("Business"), "Business", f, "Business"));
         prices.add(priceChip("First",    f.getDynamicPrice("First"),    "First",    f, "First"));
 
-        // Right: availability badge
+        //Right: availability badge
         JPanel right = new JPanel(new GridBagLayout());
         right.setOpaque(false);
         right.setPreferredSize(new Dimension(100, 0));
