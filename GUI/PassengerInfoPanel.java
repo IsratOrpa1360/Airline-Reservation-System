@@ -30,7 +30,7 @@ public class PassengerInfoPanel extends JPanel {
         body.setBackground(UITheme.SURFACE);
         body.setBorder(new EmptyBorder(14, 14, 14, 14));
 
-        // Left: form
+        //Left: form
         JPanel formCard = UITheme.card();
         formCard.setLayout(new BoxLayout(formCard, BoxLayout.Y_AXIS));
         formCard.setBorder(new EmptyBorder(20, 22, 20, 22));
@@ -56,7 +56,7 @@ public class PassengerInfoPanel extends JPanel {
         formCard.add(grid);
         formCard.add(Box.createVerticalStrut(12));
 
-        // Meal row
+        //Meal row
         JPanel mealRow = new JPanel(new BorderLayout(10, 0));
         mealRow.setOpaque(false);
         mealRow.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -85,7 +85,7 @@ public class PassengerInfoPanel extends JPanel {
         btnRow.add(continueBtn);
         formCard.add(btnRow);
 
-        // Right: booking summary
+        //Right: booking
         JPanel summaryCard = buildSummaryCard();
         summaryCard.setPreferredSize(new Dimension(280, 0));
 
@@ -166,7 +166,7 @@ public class PassengerInfoPanel extends JPanel {
         frame.gotoPayment();
     }
 
-    // Called before showing this panel
+    //Called before showing this panel
     public void refresh() {
         AppSession ses = AppSession.getInstance();
         Flight f = ses.getSelectedFlight();
@@ -180,7 +180,7 @@ public class PassengerInfoPanel extends JPanel {
                 "<b>Est. Total:</b> ৳" + String.format("%,.2f", ses.getTotalPrice()) + "</html>";
         flightSummaryLabel.setText(info);
 
-        // Pre-fill email from session
+        //Prefill email from session
         if (!ses.isGuest() && ses.getCurrentUser() != null && txtEmail.getText().isEmpty()) {
             txtEmail.setText(ses.getCurrentUser().getEmail());
         } else if (ses.isGuest() && txtEmail.getText().isEmpty()) {
