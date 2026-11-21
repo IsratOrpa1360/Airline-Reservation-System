@@ -9,10 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
-/**
- * Interactive airplane seat-map panel.
- * Layout: Rows 1-3 First (4 seats), 4-8 Business (4 seats), 9-28 Economy (6 seats).
- */
+
 public class SeatSelectionPanel extends JPanel {
 
     private MainFrame frame;
@@ -41,7 +38,7 @@ public class SeatSelectionPanel extends JPanel {
         body.setBackground(UITheme.SURFACE);
         body.setBorder(new EmptyBorder(14, 14, 14, 14));
 
-        // Left: seat map
+        //Left: seat map
         seatMapPanel = new JPanel();
         seatMapPanel.setBackground(UITheme.WHITE);
         seatMapPanel.setBorder(BorderFactory.createLineBorder(UITheme.BORDER));
@@ -52,7 +49,7 @@ public class SeatSelectionPanel extends JPanel {
         seatScroll.setPreferredSize(new Dimension(520, 0));
         body.add(seatScroll, BorderLayout.CENTER);
 
-        // Right: info + legend
+        //Right: info + legend
         JPanel right = new JPanel();
         right.setBackground(UITheme.SURFACE);
         right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
@@ -92,24 +89,24 @@ public class SeatSelectionPanel extends JPanel {
         int y = 20;
         int startX = 50;
 
-        // Nose
+        //Nose
         drawLabel(seatMapPanel, "✈ FRONT", startX + 160, y, UITheme.NAVY, UITheme.F_H4); y += 30;
 
-        // FIRST CLASS
+        //FIRST CLASS
         drawSectionLabel(seatMapPanel, "FIRST CLASS", y); y += 30;
         for (int row = 1; row <= FIRST_ROWS; row++) {
             y = drawRow(seatMapPanel, row, new char[]{'A','B',' ','C','D'}, "First", booked, y, startX);
         }
         drawDivider(seatMapPanel, y); y += 20;
 
-        // BUSINESS CLASS
+        //BUSINESS CLASS
         drawSectionLabel(seatMapPanel, "BUSINESS CLASS", y); y += 30;
         for (int row = FIRST_ROWS + 1; row <= FIRST_ROWS + BUSINESS_ROWS; row++) {
             y = drawRow(seatMapPanel, row, new char[]{'A','B',' ','C','D'}, "Business", booked, y, startX);
         }
         drawDivider(seatMapPanel, y); y += 20;
 
-        // ECONOMY CLASS
+        //ECONOMY CLASS
         drawSectionLabel(seatMapPanel, "ECONOMY CLASS", y); y += 30;
         for (int row = FIRST_ROWS + BUSINESS_ROWS + 1; row <= FIRST_ROWS + BUSINESS_ROWS + ECONOMY_ROWS; row++) {
             y = drawRow(seatMapPanel, row, new char[]{'A','B','C',' ','D','E','F'}, "Economy", booked, y, startX);
@@ -121,7 +118,7 @@ public class SeatSelectionPanel extends JPanel {
     }
 
     private int drawRow(JPanel panel, int row, char[] cols, String cls, List<String> booked, int y, int startX) {
-        // Row number
+        //Row number
         JLabel rowNum = new JLabel(String.format("%2d", row));
         rowNum.setFont(UITheme.F_SMALL);
         rowNum.setForeground(UITheme.TEXT_MUTED);
@@ -166,7 +163,7 @@ public class SeatSelectionPanel extends JPanel {
         AppSession ses = AppSession.getInstance();
         String required = ses.getSelectedClass();
 
-        // Enforce class restriction
+        //Enforce class restriction
         if (required != null && !required.isEmpty() && !cls.equals(required)) {
             JOptionPane.showMessageDialog(this,
                 "You selected " + required + " class. Please choose a " + required + " seat.",
@@ -174,7 +171,7 @@ public class SeatSelectionPanel extends JPanel {
             return;
         }
 
-        // Deselect previous
+        //Deselect previous
         if (selectedBtn != null) {
             selectedBtn.setBackground(UITheme.SEAT_AVAIL);
         }
@@ -186,7 +183,7 @@ public class SeatSelectionPanel extends JPanel {
         double price = ses.getSelectedFlight().getDynamicPrice(cls);
         ses.setBasePrice(price);
 
-        // Compute total with taxes/service
+        //Compute total with taxes/service
         Payment pay = new Payment(price, 0, 0, "");
         ses.setTotalPrice(pay.calculateTotal());
 

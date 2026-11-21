@@ -115,7 +115,7 @@ public class PaymentPanel extends JPanel {
 
         card.add(Box.createVerticalStrut(16));
 
-        // Card fields (shown for Card payments)
+        //Card fields
         cardFieldsPanel = new JPanel(new GridLayout(0, 1, 0, 8));
         cardFieldsPanel.setOpaque(false);
         cardFieldsPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -181,7 +181,7 @@ public class PaymentPanel extends JPanel {
         String cls = ses.getSelectedClass();
         double base = f.getDynamicPrice(cls != null ? cls : "Economy");
 
-        // Compute components
+        //Compute components
         double clsSurcharge = 0;
         double demand = 0;
         double fill = f.getTotalSeats() > 0 ? (double) f.getBookedSeats() / f.getTotalSeats() : 0;
@@ -191,7 +191,7 @@ public class PaymentPanel extends JPanel {
         Payment pay = new Payment(base, clsSurcharge, demand, "");
         ses.setTotalPrice(pay.calculateTotal());
 
-        // Booking summary
+        //Booking summary
         Passenger p = ses.getBookingPassenger();
         summaryLbl.setText("<html><b>Flight:</b> " + f.getFlightNumber() + "  " +
                 f.getOrigin() + " → " + f.getDestination() + "<br>" +
@@ -223,7 +223,7 @@ public class PaymentPanel extends JPanel {
 
         String method = (String) cmbMethod.getSelectedItem();
 
-        // Validate card details if needed
+        //Validate card details if needed
         if (method != null && (method.startsWith("Credit") || method.startsWith("Debit"))) {
             if (txtCardNumber.getText().trim().length() < 12 ||
                 txtExpiry.getText().trim().isEmpty() ||
@@ -233,7 +233,7 @@ public class PaymentPanel extends JPanel {
             }
         }
 
-        // Prevent duplicate seat booking
+        //Prevent duplicate seat booking
         BookingManagement bm = new BookingManagement();
         if (bm.isSeatBooked(f.getFlightNumber(), ses.getSelectedSeat())) {
             JOptionPane.showMessageDialog(this, "Seat " + ses.getSelectedSeat() + " was just booked by someone else. Please select another seat.",
@@ -242,7 +242,7 @@ public class PaymentPanel extends JPanel {
             return;
         }
 
-        // Build payment
+        //Build payment
         String cls = ses.getSelectedClass();
         double base = f.getDynamicPrice(cls != null ? cls : "Economy");
         double fill = f.getTotalSeats() > 0 ? (double) f.getBookedSeats() / f.getTotalSeats() : 0;
@@ -251,7 +251,7 @@ public class PaymentPanel extends JPanel {
         pay.processPayment();
         ses.setCurrentPayment(pay);
 
-        // Create booking
+        //Create booking
         String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         Booking booking = new Booking(
             bm.generateBookingId(), ses.getBookingUsername(), f.getFlightNumber(),
@@ -262,10 +262,10 @@ public class PaymentPanel extends JPanel {
             pay.calculateTotal(), true, "Confirmed", today);
         bm.saveBooking(booking);
 
-        // Update flight seat count
+        //Update flight seat count
         new FlightManagement().incrementBooked(f.getFlightNumber());
 
-        // Award loyalty points
+        //Award loyalty points
         if (!ses.isGuest() && ses.getCurrentUser() != null) {
             User user = ses.getCurrentUser();
             LoyaltyProgram lp = new LoyaltyProgram(user.getUsername(), user.getLoyaltyPoints());
