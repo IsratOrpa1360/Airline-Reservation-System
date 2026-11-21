@@ -19,7 +19,7 @@ public class MainDashboard extends JFrame {
         JPanel main = new JPanel(new BorderLayout());
         main.setBackground(Color.WHITE);
 
-        // ── Header ─────────────────────────────────────────────────────────────
+        //Header
         JPanel header = new JPanel(new BorderLayout());
         header.setBackground(SimpleTheme.HEADER_BG);
         header.setPreferredSize(new Dimension(0, 62));
@@ -39,7 +39,7 @@ public class MainDashboard extends JFrame {
         header.add(hLeft, BorderLayout.WEST);
         main.add(header, BorderLayout.NORTH);
 
-        // ── Navigation buttons ─────────────────────────────────────────────────
+        //Navigation buttons
         JPanel navArea = new JPanel(new BorderLayout(0, 8));
         navArea.setBackground(Color.WHITE);
         navArea.setBorder(new EmptyBorder(20, 30, 10, 30));
@@ -71,7 +71,7 @@ public class MainDashboard extends JFrame {
 
         add(main);
 
-        // Ctrl+Space → Spotlight search
+
         KeyStroke ks = KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_SPACE,
             java.awt.event.InputEvent.CTRL_DOWN_MASK);
         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(ks, "spotlight");
