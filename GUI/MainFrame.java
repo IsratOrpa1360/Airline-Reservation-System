@@ -5,10 +5,7 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/**
- * Main application window. Holds a sidebar navigation and a CardLayout
- * content area that hosts every feature panel.
- */
+
 public class MainFrame extends JFrame {
 
     private static final String P_DASHBOARD   = "dashboard";
@@ -29,7 +26,7 @@ public class MainFrame extends JFrame {
     private JLabel     userLabel;
     private JButton    activeNavBtn;
 
-    // Panel references (lazy-init)
+    //Panel references
     private DashboardPanel       dashboardPanel;
     private FlightSearchPanel    searchPanel;
     private SeatSelectionPanel   seatPanel;
@@ -43,7 +40,7 @@ public class MainFrame extends JFrame {
     private RouteMapPanel        routePanel;
     private PassengerRegGUI      paxMgrPanel;
 
-    // Static reference for panels to call navigation
+    //Static reference for panels to call navigation
     private static MainFrame instance;
 
     public MainFrame() {
@@ -66,7 +63,7 @@ public class MainFrame extends JFrame {
 
     public static MainFrame get() { return instance; }
 
-    // ── Top bar ────────────────────────────────────────────────────────────────
+    //Top bar
     private JPanel buildTopBar() {
         JPanel bar = new JPanel(new BorderLayout());
         bar.setBackground(UITheme.NAVY);
@@ -100,7 +97,7 @@ public class MainFrame extends JFrame {
         return bar;
     }
 
-    // ── Sidebar ────────────────────────────────────────────────────────────────
+    //Sidebar
     private JPanel buildSidebar() {
         JPanel sidebar = new JPanel();
         sidebar.setBackground(new Color(12, 34, 88));
@@ -127,7 +124,7 @@ public class MainFrame extends JFrame {
 
         sidebar.add(Box.createVerticalGlue());
 
-        // Version label
+        //Version label
         JLabel ver = UITheme.label("  v2.0 — SkyLink ARS", UITheme.F_SMALL, new Color(80, 110, 170));
         ver.setBorder(new EmptyBorder(8, 12, 4, 0));
         ver.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -170,13 +167,13 @@ public class MainFrame extends JFrame {
         sidebar.add(btn);
     }
 
-    // ── Content area ───────────────────────────────────────────────────────────
+    //Content area
     private JPanel buildContent() {
         cardLayout  = new CardLayout();
         contentArea = new JPanel(cardLayout);
         contentArea.setBackground(UITheme.SURFACE);
 
-        // Lazy-init all panels
+        //Lazy-init all panels
         dashboardPanel  = new DashboardPanel(this);
         searchPanel     = new FlightSearchPanel(this);
         seatPanel       = new SeatSelectionPanel(this);
@@ -206,7 +203,7 @@ public class MainFrame extends JFrame {
         return contentArea;
     }
 
-    // ── Navigation ─────────────────────────────────────────────────────────────
+    //Navigation
     public void showPanel(String name) {
         // Refresh panels that need up-to-date data
         if (P_DASHBOARD.equals(name)) dashboardPanel.refresh();
@@ -219,12 +216,12 @@ public class MainFrame extends JFrame {
 
         cardLayout.show(contentArea, name);
 
-        // Highlight active nav button
+        //Highlight active nav button
         updateNavHighlight(name);
     }
 
     private void updateNavHighlight(String panelName) {
-        // Reset all sidebar buttons
+        //Reset all sidebar buttons
         Component[] sidebar = ((JPanel) getContentPane().getComponent(1)).getComponents();
         for (Component c : sidebar) {
             if (c instanceof JButton) {
@@ -234,7 +231,7 @@ public class MainFrame extends JFrame {
                 activeNavBtn = null;
             }
         }
-        // Activate matching button by its action command (not easily tracked here — skip for now)
+        //Activate matching button by its action command 
     }
 
     public void gotoSearch()          { showPanel(P_SEARCH); }
