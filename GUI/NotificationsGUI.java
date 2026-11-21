@@ -29,7 +29,7 @@ public class NotificationsGUI extends JFrame {
         content.setBackground(Color.WHITE);
         content.setBorder(new EmptyBorder(10, 12, 10, 12));
 
-        // Toolbar
+        //Toolbar
         JPanel toolbar = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 4));
         toolbar.setBackground(Color.WHITE);
         toolbar.setBorder(BorderFactory.createLineBorder(SimpleTheme.BORDER_COL));
@@ -45,7 +45,7 @@ public class NotificationsGUI extends JFrame {
         toolbar.add(btnRefresh); toolbar.add(btnBooking); toolbar.add(btnSystem);
         content.add(toolbar, BorderLayout.NORTH);
 
-        // Table
+        //Table
         String[] cols = {"Type", "Message", "Date/Time"};
         model = new DefaultTableModel(cols, 0) {
             public boolean isCellEditable(int r, int c) { return false; }
